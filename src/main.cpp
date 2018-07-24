@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
-	signal(SIGINT, SIGINT_handler);	//	ensure that verything will be closed/freed properly
+	signal(SIGINT, SIGINT_handler);	//	ensure that everything will be closed/freed properly
 
 	auto protocol = std::make_unique<ossia::net::multiplex_protocol>();
 	auto& multiplex = *protocol;
