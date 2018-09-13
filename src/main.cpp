@@ -7,12 +7,16 @@
 #include "c24_protocol.hpp"
 
 
-static bool running = true;
+static bool running = false;
 
 static void SIGINT_handler(int dummy)
 {
 	std::cout << std::endl << "Quiting..." << std::endl;
-	running = false;	
+	
+	if (running) 
+		running = false;	//	ENsure proper deconection (Protocol Dtor)
+	else
+		exit(0);
 }
 
 static void usage(const char *argv0)
@@ -37,6 +41,7 @@ int main(int argc, char **argv)
 	multiplex.expose_to(std::make_unique<ossia::oscquery::oscquery_server_protocol>(atoi(argv[1]), atoi(argv[2])));
 	multiplex.expose_to(std::make_unique<c24_device::digidesign_c24_protocol>());
 
+	running = true;
 	while(running)
 	{
 		std::this_thread::sleep_for(std::chrono::seconds(1));
