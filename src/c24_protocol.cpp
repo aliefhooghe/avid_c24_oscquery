@@ -41,7 +41,7 @@ namespace c24_device {
         
         for (uint8_t track_id = 0; track_id < 24; ++track_id) {
             
-            track_prefix[track_id] = "/Channel-" + std::to_string(track_id) + "/";
+            track_prefix[track_id] = "/Channel-" + std::to_string(track_id + 1) + "/";
 
             m_slider_parameters[track_id] = 
                 device_parameter::create_device_parameter<c24_slider_parameter>(
