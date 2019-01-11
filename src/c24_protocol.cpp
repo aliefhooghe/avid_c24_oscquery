@@ -106,7 +106,7 @@ namespace c24_device {
         return true;
     }
 
-    bool digidesign_c24_protocol::push(const net::parameter_base& param)
+    bool digidesign_c24_protocol::push(const net::parameter_base& param, const ossia::value&)
     {
         return true;
     }
